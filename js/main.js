@@ -1,11 +1,11 @@
 jQuery(document).ready(function($){    
   
-     // accordeon
-
-    // $('[data-faq]').click(function(){
-    //   $(this).find('.faq__title').toggleClass('opened');
-    //   $(this).find('p').slideToggle(400);
-    // })
+  $('[data-nav]').on("click","a", function (event) {
+    event.preventDefault();
+    var id  = $(this).attr('href'),
+        top = $(id).offset().top;
+    $('body,html').animate({scrollTop: top}, 1500);
+});
 
     //header menu 
     // if ($(window).width() > 993) {
@@ -30,7 +30,71 @@ jQuery(document).ready(function($){
   
     //   closeMenu();
     // }
-    
+    //slider
+
+    $('[data-slider]').slick({
+      dots: true,
+      speed: 300,
+      slidesToShow: 3,
+      responsive: [
+      {
+          breakpoint: 768,
+          settings: {
+          slidesToShow: 1,
+          variableWidth: false
+          }
+      },
+      {
+          breakpoint: 567,
+          settings: {
+          slidesToShow: 1,
+          variableWidth: false
+          }
+      }
+      ]
+  });
+  $('[data-pedag]').slick({
+    dots: true,
+    speed: 300,
+    slidesToShow: 4,
+    responsive: [
+    {
+        breakpoint: 768,
+        settings: {
+        slidesToShow: 1,
+        variableWidth: false
+        }
+    },
+    {
+        breakpoint: 567,
+        settings: {
+        slidesToShow: 1,
+        variableWidth: false
+        }
+    }
+    ]
+});
+$('[data-sert]').slick({
+  dots: true,
+  speed: 300,
+  slidesToShow: 5,
+  responsive: [
+  {
+      breakpoint: 768,
+      settings: {
+      slidesToShow: 1,
+      variableWidth: false
+      }
+  },
+  {
+      breakpoint: 567,
+      settings: {
+      slidesToShow: 1,
+      variableWidth: false
+      }
+  }
+  ]
+});
     // burger
 
     $('[data-burger]').click(function(){
@@ -39,6 +103,12 @@ jQuery(document).ready(function($){
         $('[data-nav]').toggleClass("open");
       });
 
+    // faq
+    $('[data-faq]').click(function(){
+      $(this).toggleClass('open');
+      $(this).find('.faq__card-help').toggleClass('open');
+      $(this).find('p').slideToggle(300);
+    })
       // adaptive
       
 })
